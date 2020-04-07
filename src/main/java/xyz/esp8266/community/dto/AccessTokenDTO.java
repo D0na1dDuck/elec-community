@@ -1,5 +1,6 @@
 package xyz.esp8266.community.dto;
 
+// DTO(Data Transfer Objects),数据传输对象。
 public class AccessTokenDTO {
     private String client_id;
     private String client_secret;
