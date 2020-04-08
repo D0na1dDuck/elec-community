@@ -2,13 +2,15 @@
 <html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>电子社区</title>
+    <title>发布 - 电子社区</title>
     <!-- Bootstrap 依赖的 jquery 文件 -->
     <script src="js/jquery-3.4.1.min.js"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- 自定义css -->
+    <link href="css/community.css" rel="stylesheet">
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="js/bootstrap.min.js"></script>
 </head>
@@ -33,9 +35,7 @@
                 <li th:if="${session.user != null}">
                     <a href="/publish">发布</a>
                 </li>
-                <li th:unless="${session.user != null}">
-                    <a href="https://github.com/login/oauth/authorize?client_id=23cea2678c592912ef5f&redirect_uri=https://elec.utools.club/callback&scope=user&state=1">登录</a>
-                </li>
+                <li th:unless="${session.user != null}"><a href="https://github.com/login/oauth/authorize?client_id=23cea2678c592912ef5f&redirect_uri=https://elec.utools.club/callback&scope=user&state=1">登录</a></li>
                 <li class="dropdown" th:if="${session.user != null}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" th:text="${session.user.getName()}"><span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -49,5 +49,35 @@
         </div>
     </div>
 </nav>
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
+            <hr>
+            <form action="/publish" method="post" role="form">
+                <div class="form-group">
+                    <label for="title">问题标题（简单扼要）：</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="问题标题..." th:value="${title}">
+                </div>
+                <div class="form-group">
+                    <label for="description">问题补充（必填，请参照右侧提示）：</label>
+                    <textarea type="text" name="description" id="description" class="form-control" cols="30" rows="10" th:text="${description}"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="tag">添加标签:</label>
+                    <textarea type="text" name="tag" id="tag" class="form-control" placeholder="输入标签：（以,分隔）" th:text="${tag}"></textarea>
+                </div>
+                <span class="alert alert-danger" th:text="${error}" th:if="${error != null}"></span>
+                <button type="submit" class="btn btn-success btn-publish">发布</button>
+            </form>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <h3>问题发起指南</h3>
+            • 问题标题: 请用精简的语言描述您发布的问题，不超过25字 <br>
+            • 问题补充: 详细补充您的问题内容，并确保问题描述清晰直观, 并提供一些相关的资料<br>
+            • 选择标签: 选择一个或者多个合适的标签，用逗号隔开，每个标签不超过10个字<br>
+        </div>
+    </div>
+</div>
 </body>
 </html>

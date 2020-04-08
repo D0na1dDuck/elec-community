@@ -1,18 +1,18 @@
 package xyz.esp8266.community.model;
 
 public class User {
-    private int id;
+    private Integer id;
     private String name;
     private String account_id;
     private String token;
-    private Long gmt_create;
-    private Long gmt_modified;
+    private Long gmtCreate;
+    private Long gmtModified;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -40,19 +40,19 @@ public class User {
         this.token = token;
     }
 
-    public Long getGmt_create() {
-        return gmt_create;
+    public Long getGmtCreate() {
+        return gmtCreate;
     }
 
-    public void setGmt_create(Long gmt_create) {
-        this.gmt_create = gmt_create;
+    public void setGmtCreate(Long gmtCreate) {
+        this.gmtCreate = gmtCreate;
     }
 
-    public Long getGmt_modified() {
-        return gmt_modified;
+    public Long getGmtModified() {
+        return gmtModified;
     }
 
-    public void setGmt_modified(Long gmt_modified) {
-        this.gmt_modified = gmt_modified;
+    public void setGmtModified(Long gmtModified) {
+        this.gmtModified = gmtModified;
     }
 }
