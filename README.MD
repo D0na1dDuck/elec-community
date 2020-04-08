@@ -29,6 +29,11 @@ create table USER
     constraint USER_PK
         primary key (ID)
 );
+```   
+
+## mvn命令
+```
+mvn flyway:migrate
 ```
 
 
