@@ -13,7 +13,8 @@
 ## 工具
 [Git](https://git-scm.com/)  
 [Github](https://github.com/)  
-[flyway](https://flywaydb.org/)
+[flyway](https://flywaydb.org/)  
+[Lombok](https://projectlombok.org/)
 
 ## 脚本
 ```sql
