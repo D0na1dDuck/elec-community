@@ -10,7 +10,6 @@ import xyz.esp8266.community.mapper.QuestionMapper;
 import xyz.esp8266.community.mapper.UserMapper;
 import xyz.esp8266.community.model.Question;
 import xyz.esp8266.community.model.User;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
