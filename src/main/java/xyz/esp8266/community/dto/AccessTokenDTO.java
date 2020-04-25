@@ -2,7 +2,10 @@ package xyz.esp8266.community.dto;
 
 import lombok.Data;
 
-// DTO(Data Transfer Objects),数据传输对象。
+/**
+ * @author Liangjiakun
+ */
+
 @Data
 public class AccessTokenDTO {
     private String client_id;

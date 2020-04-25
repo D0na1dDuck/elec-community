@@ -2,6 +2,9 @@ package xyz.esp8266.community.model;
 
 import lombok.Data;
 
+/**
+ * @author Liangjiakun
+ */
 @Data
 public class Question {
     private Integer id;

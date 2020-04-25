@@ -7,6 +7,9 @@ import xyz.esp8266.community.dto.AccessTokenDTO;
 import xyz.esp8266.community.dto.GithubUser;
 import java.io.IOException;
 
+/**
+ * @author Liangjiakun
+ */
 @Component
 public class GithubProvider {
     public String getAccessToken(AccessTokenDTO accessTokenDTO){

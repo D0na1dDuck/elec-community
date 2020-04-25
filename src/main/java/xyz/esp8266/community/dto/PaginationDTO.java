@@ -1,23 +1,26 @@
 package xyz.esp8266.community.dto;
 
 import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Liangjiakun
+ */
 @Data
 public class PaginationDTO {
     private List<QuestionDTO> questions;
-    private boolean showPrevious;
-    private boolean showNext;
-    private boolean showFirstPage;
-    private boolean showEndPage;
+    private Boolean showPrevious;
+    private Boolean showNext;
+    private Boolean showFirstPage;
+    private Boolean showEndPage;
     private Integer page;
-    private List<Integer> pages = new ArrayList<>();
+    private List<Integer> pages;
     private Integer totalPage;
 
     public void setPagination(Integer totalCount, Integer page, Integer size) {
-
+        pages = new ArrayList<>();
+        final int SHOW_SCOPE = 3;
         totalPage = 0;
         if (totalCount % size == 0) {
             totalPage = totalCount / size;
@@ -34,7 +37,7 @@ public class PaginationDTO {
         this.page = page;
 
         pages.add(page);
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 1; i <= SHOW_SCOPE; i++) {
             if (page - i > 0) {
                 pages.add(0, page - i);
             }
@@ -50,7 +53,7 @@ public class PaginationDTO {
             showPrevious = true;
         }
         // 是否展示下一页
-        if (page == totalPage) {
+        if (page.equals(totalPage)) {
             showNext = false;
         } else {
             showNext = true;
