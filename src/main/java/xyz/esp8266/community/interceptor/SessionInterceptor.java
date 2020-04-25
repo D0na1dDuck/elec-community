@@ -30,7 +30,7 @@ public class SessionInterceptor implements HandlerInterceptor {
                 }
             }
         }
-        return false;
+        return true;
     }
 
     @Override
