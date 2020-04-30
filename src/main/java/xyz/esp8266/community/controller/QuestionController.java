@@ -6,10 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import xyz.esp8266.community.dto.QuestionDTO;
-import xyz.esp8266.community.mapper.QuestionMapper;
 import xyz.esp8266.community.service.QuestionService;
 
-import javax.annotation.Generated;
 
 @Controller
 public class QuestionController {
@@ -20,7 +18,7 @@ public class QuestionController {
     public String question(@PathVariable(name = "id") Integer id,
                            Model model){
         QuestionDTO questionDTO = questionService.getById(id);
-       model.addAttribute("question", questionDTO);
+        model.addAttribute("question", questionDTO);
         return "question";
     }
 }

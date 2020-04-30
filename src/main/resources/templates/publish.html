@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <title>提问 - 电子社区</title>
     <!-- Bootstrap 依赖的 jquery 文件 -->
-    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="/js/jquery-3.5.0.js"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- 自定义css -->
-    <link href="css/community.css" rel="stylesheet">
+    <link href="/css/community.css" rel="stylesheet">
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div th:replace="navigation :: nav"></div>
@@ -22,6 +22,7 @@
             <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
             <hr>
             <form action="/publish" method="post" role="form">
+                <input type="hidden" name="id" th:value="${id}">
                 <div class="form-group">
                     <label for="title">问题标题（简单扼要）：</label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="问题标题..." th:value="${title}">

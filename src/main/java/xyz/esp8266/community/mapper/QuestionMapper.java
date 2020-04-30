@@ -1,9 +1,6 @@
 package xyz.esp8266.community.mapper;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import xyz.esp8266.community.model.Question;
 import java.util.List;
@@ -26,4 +23,6 @@ public interface QuestionMapper {
     Integer countByUserId(@Param(value = "userId") Integer userId);
     @Select("select * from question where id = #{id}")
     Question getById(@Param(value = "id") Integer id);
+    @Update("update question set title = #{title}, description = #{description}, tag = #{tag}, gmt_modified = #{gmtModified} where id = #{id}")
+    void update(Question question);
 }
