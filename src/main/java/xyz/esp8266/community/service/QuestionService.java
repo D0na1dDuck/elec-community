@@ -6,11 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.esp8266.community.dto.PaginationDTO;
 import xyz.esp8266.community.dto.QuestionDTO;
+import xyz.esp8266.community.exception.CustomizeErrorCode;
+import xyz.esp8266.community.exception.CustomizeException;
 import xyz.esp8266.community.mapper.QuestionMapper;
 import xyz.esp8266.community.mapper.UserMapper;
 import xyz.esp8266.community.model.Question;
 import xyz.esp8266.community.model.QuestionExample;
 import xyz.esp8266.community.model.User;
+
+import javax.swing.undo.CannotUndoException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +37,10 @@ public class QuestionService {
             question.setGmtModified(System.currentTimeMillis());
             QuestionExample questionExample = new QuestionExample();
             questionExample.createCriteria().andIdEqualTo(question.getId());
-            questionMapper.updateByExampleSelective(question, questionExample);
+            int updated = questionMapper.updateByExampleSelective(question, questionExample);
+            if(updated != 1){
+                throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+            }
         }
     }
 
@@ -95,6 +102,9 @@ public class QuestionService {
 
     public QuestionDTO getById(Integer id) {
         Question question = questionMapper.selectByPrimaryKey(id);
+        if(question == null){
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+        }
         QuestionDTO questionDTO = new QuestionDTO();
         BeanUtils.copyProperties(question, questionDTO);
         User user = userMapper.selectByPrimaryKey(question.getCreator());
