@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import xyz.esp8266.community.dto.QuestionDTO;
 import xyz.esp8266.community.service.QuestionService;
 
-
 @Controller
 public class QuestionController {
     @Autowired
