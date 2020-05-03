@@ -8,6 +8,7 @@ import xyz.esp8266.community.dto.PaginationDTO;
 import xyz.esp8266.community.dto.QuestionDTO;
 import xyz.esp8266.community.exception.CustomizeErrorCode;
 import xyz.esp8266.community.exception.CustomizeException;
+import xyz.esp8266.community.mapper.QuestionExtMapper;
 import xyz.esp8266.community.mapper.QuestionMapper;
 import xyz.esp8266.community.mapper.UserMapper;
 import xyz.esp8266.community.model.Question;
@@ -27,12 +28,14 @@ public class QuestionService {
     private QuestionMapper questionMapper;
     @Autowired
     private UserMapper userMapper;
-
+    @Autowired
+    private QuestionExtMapper questionExtMapper;
     public void createOrUpdate(Question question) {
         if(question.getId() == null){
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
-            questionMapper.insert(question);
+            // insert()方法导致默认值无效=null
+            questionMapper.insertSelective(question);
         }else{
             question.setGmtModified(System.currentTimeMillis());
             QuestionExample questionExample = new QuestionExample();
@@ -110,5 +113,12 @@ public class QuestionService {
         User user = userMapper.selectByPrimaryKey(question.getCreator());
         questionDTO.setUser(user);
         return questionDTO;
+    }
+    // 增加阅读数
+    public void incView(Integer id) {
+        Question question = new Question();
+        question.setId(id);
+        question.setViewCount(1);
+        questionExtMapper.incView(question);
     }
 }
