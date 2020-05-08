@@ -48,6 +48,7 @@ public class QuestionService {
     public PaginationDTO list(Integer page, Integer size){
         PaginationDTO paginationDTO = new PaginationDTO();
         QuestionExample questionExample = new QuestionExample();
+        questionExample.setOrderByClause("gmt_create desc");
         Integer totalCount = (int)questionMapper.countByExample(questionExample);
         paginationDTO.setPagination(totalCount, page, size);
         if (page < 1) {
@@ -76,6 +77,7 @@ public class QuestionService {
         PaginationDTO paginationDTO = new PaginationDTO();
         QuestionExample questionExample = new QuestionExample();
         questionExample.createCriteria().andCreatorEqualTo(userId);
+        questionExample.setOrderByClause("gmt_create desc");
         Integer totalCount = (int)questionMapper.countByExample(questionExample);
         paginationDTO.setPagination(totalCount, page, size);
         if (page < 1) {

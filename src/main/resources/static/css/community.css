@@ -9,12 +9,15 @@ body {
 
 .btn-publish {
     float: right;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .media-object {
     width: 40px;
     height: 40px;
+}
+.media-body {
+    padding-top: 10px;
 }
 
 .text-desc {
@@ -33,4 +36,51 @@ body {
 }
 .jumbotron {
     margin: 100px;
+}
+
+.comment {
+    margin: 10px 0;
+}
+
+.btn-comment {
+    float: right;
+    margin-bottom: 10px;
+}
+
+.btn-talk {
+    float: right;
+    margin: 10px 0;
+}
+
+.sub-comment {
+    border-radius: 5px;
+    margin-top: 10px;
+    border:1px solid #eeeeee;
+    padding-top: 15px;
+}
+
+.comment-sp {
+    margin-top: 0
+}
+
+.menu {
+    color: #9d9d9d;
+    padding-top: 10px;
+}
+.menu .comment-icon {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.menu .comment-icon :hover {
+    color: #499ef3;
+}
+
+
+.menu .active {
+    color: #2aabd2;
+}
+
+.menu .icon:hover {
+    color: #2aabd2;
 }
