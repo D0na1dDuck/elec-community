@@ -22,4 +22,7 @@
         set COMMENT_COUNT = COMMENT_COUNT + #{commentCount,jdbcType=INTEGER}
         where id = #{id}
     </update>
+    <select id="selectRelated" parameterType="xyz.esp8266.community.model.QuestionExample" resultMap="BaseResultMap">
+        select * from QUESTION where id != #{id} and tag regexp #{tag} limit 10
+    </select>
 </mapper>

@@ -84,3 +84,18 @@ body {
 .menu .icon:hover {
     color: #2aabd2;
 }
+.question-tag {
+    margin-right: 5px;
+}
+
+.question-related {
+    line-height: 20px;
+    font-size: 12px;
+    margin-left: 0;
+    list-style: none;
+    padding-left: 0;
+}
+
+.question-wechat {
+    width: 100%;
+}
